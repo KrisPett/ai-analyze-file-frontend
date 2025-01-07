@@ -1,3 +1,12 @@
 import { Routes } from '@angular/router';
 
-export const routes: Routes = [];
+import { AnalyzeResultViewComponent } from './features/analyze-result-view/analyze-result-view.component';
+import { UploadFileViewComponent } from './features/upload-file-view/upload-file-view.component';
+import {HomeViewComponent} from './home-view/home-view.component';
+
+export const routes: Routes = [
+    { path: '', component: HomeViewComponent },
+    { path: 'upload', component: UploadFileViewComponent },
+    { path: 'analyze', component: AnalyzeResultViewComponent },
+    { path: '**', redirectTo: '', pathMatch: 'full' }
+];
