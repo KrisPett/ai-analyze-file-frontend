@@ -1,103 +1,126 @@
-<div id="hs-file-upload-with-limited-file-size" data-hs-file-upload='{
-    "url": "/upload",
-    "maxFilesize": 1,
-    "extensions": {
-      "default": {
-        "class": "shrink-0 size-5"
-      },
-      "xls": {
-        "class": "shrink-0 size-5"
-      },
-      "zip": {
-        "class": "shrink-0 size-5"
-      },
-      "csv": {
-        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 22h14a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v4\"/><path d=\"M14 2v4a2 2 0 0 0 2 2h4\"/><path d=\"m5 12-3 3 3 3\"/><path d=\"m9 18 3-3-3-3\"/></svg>",
-        "class": "shrink-0 size-5"
-      }
-    }
-  }'>
-    <template data-hs-file-upload-preview="">
-      <div class="p-3 bg-white border border-solid border-gray-300 rounded-xl dark:bg-neutral-800 dark:border-neutral-600">
-        <div class="mb-1 flex justify-between items-center">
-          <div class="flex items-center gap-x-3">
-            <span class="size-10 flex justify-center items-center border border-gray-200 text-gray-500 rounded-lg dark:border-neutral-700 dark:text-neutral-500" data-hs-file-upload-file-icon="">
-              <img class="rounded-lg hidden" data-dz-thumbnail="">
-            </span>
+<div class="flex items-center justify-center p-12">
+  <div class="mx-auto w-full max-w-[550px] bg-white">
+    <form
+      class="py-6 px-9"
+      action="https://formbold.com/s/FORM_ID"
+      method="POST"
+    >
+      <div class="mb-5">
+        <label
+          for="email"
+          class="mb-3 block text-base font-medium text-[#07074D]"
+        >
+          Send files to this email:
+        </label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="example@domain.com"
+          class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+        />
+      </div>
+
+      <div class="mb-6 pt-4">
+        <label class="mb-5 block text-xl font-semibold text-[#07074D]">
+          Upload File
+        </label>
+
+        <div class="mb-8">
+          <input type="file" name="file" id="file" class="sr-only" />
+          <label
+            for="file"
+            class="relative flex min-h-[200px] items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-12 text-center"
+          >
             <div>
-              <p class="text-sm font-medium text-gray-800 dark:text-white">
-                <span class="truncate inline-block max-w-[300px] align-bottom" data-hs-file-upload-file-name=""></span>.<span data-hs-file-upload-file-ext=""></span>
-              </p>
-              <p class="text-xs text-gray-500 dark:text-neutral-500" data-hs-file-upload-file-size="" data-hs-file-upload-file-success=""></p>
-              <p class="text-xs text-red-500" style="display: none;" data-hs-file-upload-file-error="">File exceeds size limit.</p>
-            </div>
-          </div>
-          <div class="flex items-center gap-x-2">
-            <span class="hs-tooltip [--placement:top] inline-block" style="display: none;" data-hs-file-upload-file-error="">
-              <span class="hs-tooltip-toggle text-red-500 hover:text-red-800 focus:outline-none focus:text-red-800 dark:text-red-500 dark:hover:text-red-200 dark:focus:text-red-200">
-                <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <line x1="12" x2="12" y1="8" y2="12"></line>
-                  <line x1="12" x2="12.01" y1="16" y2="16"></line>
-                </svg>
-                <span class="hs-tooltip-content max-w-[100px] hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700" role="tooltip">
-                  Please try to upload a file smaller than 1MB.
-                </span>
+              <span class="mb-2 block text-xl font-semibold text-[#07074D]">
+                Drop files here
               </span>
+              <span class="mb-2 block text-base font-medium text-[#6B7280]">
+                Or
+              </span>
+              <span
+                class="inline-flex rounded border border-[#e0e0e0] py-2 px-7 text-base font-medium text-[#07074D]"
+              >
+                Browse
+              </span>
+            </div>
+          </label>
+        </div>
+
+        <div class="mb-5 rounded-md bg-[#F5F7FB] py-4 px-8">
+          <div class="flex items-center justify-between">
+            <span class="truncate pr-3 text-base font-medium text-[#07074D]">
+              banner-design.png
             </span>
-            <button type="button" class="text-gray-500 hover:text-gray-800 focus:outline-none focus:text-gray-800 dark:text-neutral-500 dark:hover:text-neutral-200 dark:focus:text-neutral-200" data-hs-file-upload-reload="">
-              <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"></path>
-                <path d="M21 3v5h-5"></path>
-              </svg>
-            </button>
-            <button type="button" class="text-gray-500 hover:text-gray-800 focus:outline-none focus:text-gray-800 dark:text-neutral-500 dark:hover:text-neutral-200 dark:focus:text-neutral-200" data-hs-file-upload-remove="">
-              <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M3 6h18"></path>
-                <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
-                <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
-                <line x1="10" x2="10" y1="11" y2="17"></line>
-                <line x1="14" x2="14" y1="11" y2="17"></line>
+            <button class="text-[#07074D]">
+              <svg
+                width="10"
+                height="10"
+                viewBox="0 0 10 10"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M0.279337 0.279338C0.651787 -0.0931121 1.25565 -0.0931121 1.6281 0.279338L9.72066 8.3719C10.0931 8.74435 10.0931 9.34821 9.72066 9.72066C9.34821 10.0931 8.74435 10.0931 8.3719 9.72066L0.279337 1.6281C-0.0931125 1.25565 -0.0931125 0.651788 0.279337 0.279338Z"
+                  fill="currentColor"
+                />
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M0.279337 9.72066C-0.0931125 9.34821 -0.0931125 8.74435 0.279337 8.3719L8.3719 0.279338C8.74435 -0.0931127 9.34821 -0.0931123 9.72066 0.279338C10.0931 0.651787 10.0931 1.25565 9.72066 1.6281L1.6281 9.72066C1.25565 10.0931 0.651787 10.0931 0.279337 9.72066Z"
+                  fill="currentColor"
+                />
               </svg>
             </button>
           </div>
         </div>
-  
-        <div class="flex items-center gap-x-3 whitespace-nowrap">
-          <div class="flex w-full h-2 bg-gray-200 rounded-full overflow-hidden dark:bg-neutral-700" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" data-hs-file-upload-progress-bar="">
-            <div class="flex flex-col justify-center rounded-full overflow-hidden bg-blue-600 text-xs text-white text-center whitespace-nowrap transition-all duration-500 hs-file-upload-complete:bg-green-500" style="width: 0" data-hs-file-upload-progress-bar-pane=""></div>
-          </div>
-          <div class="w-10 text-end">
-            <span class="text-sm text-gray-800 dark:text-white">
-              <span data-hs-file-upload-progress-bar-value="">0</span>%
+
+        <div class="rounded-md bg-[#F5F7FB] py-4 px-8">
+          <div class="flex items-center justify-between">
+            <span class="truncate pr-3 text-base font-medium text-[#07074D]">
+              banner-design.png
             </span>
+            <button class="text-[#07074D]">
+              <svg
+                width="10"
+                height="10"
+                viewBox="0 0 10 10"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M0.279337 0.279338C0.651787 -0.0931121 1.25565 -0.0931121 1.6281 0.279338L9.72066 8.3719C10.0931 8.74435 10.0931 9.34821 9.72066 9.72066C9.34821 10.0931 8.74435 10.0931 8.3719 9.72066L0.279337 1.6281C-0.0931125 1.25565 -0.0931125 0.651788 0.279337 0.279338Z"
+                  fill="currentColor"
+                />
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M0.279337 9.72066C-0.0931125 9.34821 -0.0931125 8.74435 0.279337 8.3719L8.3719 0.279338C8.74435 -0.0931127 9.34821 -0.0931123 9.72066 0.279338C10.0931 0.651787 10.0931 1.25565 9.72066 1.6281L1.6281 9.72066C1.25565 10.0931 0.651787 10.0931 0.279337 9.72066Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </button>
+          </div>
+          <div class="relative mt-5 h-[6px] w-full rounded-lg bg-[#E2E5EF]">
+            <div
+              class="absolute left-0 right-0 h-full w-[75%] rounded-lg bg-[#6A64F1]"
+            ></div>
           </div>
         </div>
       </div>
-    </template>
-  
-    <div class="cursor-pointer p-12 flex justify-center bg-white border border-dashed border-gray-300 rounded-xl dark:bg-neutral-800 dark:border-neutral-600" data-hs-file-upload-trigger="">
-      <div class="text-center">
-        <span class="inline-flex justify-center items-center size-16 bg-gray-100 text-gray-800 rounded-full dark:bg-neutral-700 dark:text-neutral-200">
-          <svg class="shrink-0 size-6" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-            <polyline points="17 8 12 3 7 8"></polyline>
-            <line x1="12" x2="12" y1="3" y2="15"></line>
-          </svg>
-        </span>
-  
-        <div class="mt-4 flex flex-wrap justify-center text-sm leading-6 text-gray-600">
-          <span class="pe-1 font-medium text-gray-800 dark:text-neutral-200">
-            Drop your file here or
-          </span>
-          <span class="bg-white font-semibold text-blue-600 hover:text-blue-700 rounded-lg decoration-2 hover:underline focus-within:outline-none focus-within:ring-2 focus-within:ring-blue-600 focus-within:ring-offset-2 dark:bg-neutral-800 dark:text-blue-500 dark:hover:text-blue-600">browse</span>
-        </div>
-  
-        <p class="mt-1 text-xs text-gray-400 dark:text-neutral-400">
-          Pick a file up to 2MB.
-        </p>
+
+      <div>
+        <button
+          class="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none"
+        >
+          Send File
+        </button>
       </div>
-    </div>
-  
-    <div class="mt-4 space-y-2 empty:mt-0" data-hs-file-upload-previews=""></div>
+    </form>
   </div>
+</div>
