@@ -22,6 +22,7 @@ export class SingleFileUploadComponent {
     if (file) {
       this.status = 'initial';
       this.file = file;
+      console.log('File selected:', file);
     }
   }
 
@@ -31,19 +32,19 @@ export class SingleFileUploadComponent {
 
       formData.append('file', this.file, this.file.name);
 
-      const upload$ = this.http.post('https://', formData);
-
+      console.log('Uploading file:', this.file.name);
       this.status = 'uploading';
 
-      upload$.subscribe({
-        next: () => {
-          this.status = 'success';
-        },
-        error: (error: any) => {
-          this.status = 'fail';
-          return throwError(() => error);
-        },
-      });
+      setTimeout(() => {
+        this.status = 'success';
+        console.log('File uploaded successfully:', this.file?.name);
+      }, 2000);
     }
+  }
+
+  removeFile() {
+    this.file = null;
+    this.status = 'initial';
+    console.log('File removed');
   }
 }
