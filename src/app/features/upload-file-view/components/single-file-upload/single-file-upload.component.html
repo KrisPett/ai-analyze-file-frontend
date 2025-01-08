@@ -1,30 +1,30 @@
-<div class="flex items-center justify-center p-12">
-  <div class="mx-auto w-full max-w-[550px] bg-[#1E1E1E]">
-    <div class="py-6 px-9">
-      <div class="mb-6 pt-4">
-        <label class="mb-5 block text-xl font-semibold text-[#E5E7EB]">
+<div class="flex items-center justify-center p-4 sm:p-8 md:p-12">
+  <div class="mx-auto w-full max-w-[90%] sm:max-w-[550px] bg-[#1E1E1E]">
+    <div class="py-4 px-6 sm:py-6 sm:px-9">
+      <div class="mb-4 sm:mb-6 pt-4">
+        <label class="mb-3 sm:mb-5 block text-lg sm:text-xl font-semibold text-[#E5E7EB]">
           Upload File
         </label>
 
-        <div class="mb-8">
+        <div class="mb-6 sm:mb-8">
           <input type="file" name="file" id="file" class="sr-only" (change)="onChange($event)" />
           <label
             for="file"
-            class="relative flex min-h-[200px] items-center justify-center rounded-md border border-dashed border-[#4B5563] p-12 text-center"
+            class="relative flex min-h-[150px] sm:min-h-[200px] items-center justify-center rounded-md border border-dashed border-[#4B5563] p-6 sm:p-12 text-center"
             [class.border-blue-500]="isDragOver"
             (dragover)="onDragOver($event)" 
             (dragleave)="onDragLeave($event)" 
             (drop)="onDrop($event)"
           >
             <div>
-              <span class="mb-2 block text-xl font-semibold text-[#E5E7EB]">
+              <span class="mb-2 block text-lg sm:text-xl font-semibold text-[#E5E7EB]">
                 Drop files here
               </span>
               <span class="mb-2 block text-base font-medium text-[#9CA3AF]">
                 Or
               </span>
               <span
-                class="inline-flex rounded border border-[#4B5563] py-2 px-7 text-base font-medium text-[#E5E7EB]"
+                class="inline-flex rounded border border-[#4B5563] py-2 px-4 sm:px-7 text-base font-medium text-[#E5E7EB]"
               >
                 Browse
               </span>
@@ -32,7 +32,7 @@
           </label>
         </div>
 
-        <div *ngIf="file" class="mb-5 rounded-md bg-[#374151] py-4 px-8">
+        <div *ngIf="file" class="mb-4 sm:mb-5 rounded-md bg-[#374151] py-3 sm:py-4 px-6 sm:px-8">
           <div class="flex items-center justify-between">
             <span class="truncate pr-3 text-base font-medium text-[#E5E7EB]">
               {{ file.name }}
@@ -65,10 +65,10 @@
 
       <div>
         <button
-          class="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none"
+          class="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-2 sm:py-3 px-6 sm:px-8 text-center text-base font-semibold text-white outline-none"
           (click)="onUpload()"
         >
-          Send File
+          Analyze File
         </button>
       </div>
     </div>
