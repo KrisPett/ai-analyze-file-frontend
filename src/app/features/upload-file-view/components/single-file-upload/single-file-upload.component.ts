@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { CommonModule } from '@angular/common';
@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 export class SingleFileUploadComponent {
   status: 'initial' | 'uploading' | 'success' | 'fail' = 'initial';
   file: File | null = null;
+  isDragOver: boolean = false;
 
   constructor(private http: HttpClient) {}
 
@@ -22,12 +23,39 @@ export class SingleFileUploadComponent {
     if (file) {
       this.status = 'initial';
       this.file = file;
-      console.log('File selected:', file);
+    }
+  }
+
+  @HostListener('dragover', ['$event'])
+  onDragOver(event: DragEvent) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.isDragOver = true;
+  }
+
+  @HostListener('dragleave', ['$event'])
+  onDragLeave(event: DragEvent) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.isDragOver = false;
+  }
+
+  @HostListener('drop', ['$event'])
+  onDrop(event: DragEvent) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.isDragOver = false;
+    const file = event.dataTransfer?.files[0];
+    if (file) {
+      this.status = 'initial';
+      this.file = file;
     }
   }
 
   onUpload() {
     if (this.file) {
+      console.log(this.file);
+      
       const formData = new FormData();
 
       formData.append('file', this.file, this.file.name);
@@ -45,6 +73,5 @@ export class SingleFileUploadComponent {
   removeFile() {
     this.file = null;
     this.status = 'initial';
-    console.log('File removed');
   }
 }
