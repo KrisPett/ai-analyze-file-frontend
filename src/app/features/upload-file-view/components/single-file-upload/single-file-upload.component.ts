@@ -2,6 +2,7 @@ import { Component, HostListener } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-single-file-upload',
@@ -57,16 +58,21 @@ export class SingleFileUploadComponent {
       console.log(this.file);
       
       const formData = new FormData();
-
       formData.append('file', this.file, this.file.name);
 
       console.log('Uploading file:', this.file.name);
       this.status = 'uploading';
 
-      setTimeout(() => {
-        this.status = 'success';
-        console.log('File uploaded successfully:', this.file?.name);
-      }, 2000);
+      this.http.post(environment.backendUrl, formData).subscribe(
+        (response) => {
+          this.status = 'success';
+          console.log('File uploaded successfully:', this.file?.name);
+        },
+        (error) => {
+          this.status = 'fail';
+          console.error('File upload failed:', error);
+        }
+      );
     }
   }
 
