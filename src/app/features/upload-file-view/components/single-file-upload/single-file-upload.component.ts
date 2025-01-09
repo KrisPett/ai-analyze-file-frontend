@@ -67,6 +67,7 @@ export class SingleFileUploadComponent {
         (response) => {
           this.status = 'success';
           console.log('File uploaded successfully:', this.file?.name);
+          console.log('Response:', response); // Log the response here
         },
         (error) => {
           this.status = 'fail';
