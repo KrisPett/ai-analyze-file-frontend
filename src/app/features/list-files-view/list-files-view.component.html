@@ -1,0 +1,27 @@
+<div class="p-4 bg-[#1E1E1E] text-white">
+  <h2 class="text-xl font-semibold mb-4">Files</h2>
+  <div *ngFor="let file of files" class="bg-[#2D2D2D] p-4 rounded-md mb-4">
+    <div class="mb-2">
+      <span class="font-semibold">File Name:</span> {{ file.name }}
+    </div>
+    <div class="mb-2">
+      <span class="font-semibold">Status:</span> {{ file.status }}
+    </div>
+    <div class="mb-2">
+      <span class="font-semibold">File ID:</span> {{ file.id }}
+    </div>
+    <div class="mb-2">
+      <span class="font-semibold">Purpose:</span> {{ file.purpose }}
+    </div>
+    <div class="mb-2">
+      <span class="font-semibold">Size:</span> {{ file.size }}
+    </div>
+    <div class="mb-2">
+      <span class="font-semibold">Created at:</span> {{ file.createdAt }}
+    </div>
+    <div class="flex mt-4">
+      <button class="mr-4 px-4 py-2 bg-blue-500 rounded hover:bg-blue-700" (click)="onDownload(file)">Download</button>
+      <button class="px-4 py-2 bg-red-500 rounded hover:bg-red-700" (click)="onDelete(file)">Delete</button>
+    </div>
+  </div>
+</div>

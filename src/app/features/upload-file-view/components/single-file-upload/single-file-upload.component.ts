@@ -63,11 +63,11 @@ export class SingleFileUploadComponent {
       console.log('Uploading file:', this.file.name);
       this.status = 'uploading';
 
-      this.http.post(environment.backendUrl, formData).subscribe(
+      this.http.post(`${environment.backendUrl}/analyze-file`, formData).subscribe(
         (response) => {
           this.status = 'success';
           console.log('File uploaded successfully:', this.file?.name);
-          console.log('Response:', response); // Log the response here
+          console.log('Response:', response);
         },
         (error) => {
           this.status = 'fail';
