@@ -9,6 +9,7 @@ import { environment } from '../../../environments/environment';
 })
 export class ListFilesViewComponent implements OnInit {
   files: any[] = [];
+  loading: boolean = false;
 
   constructor(private http: HttpClient) {}
 
@@ -17,10 +18,10 @@ export class ListFilesViewComponent implements OnInit {
   }
 
   fetchFiles() {
+    this.loading = true;
     this.http.get<any>(`${environment.backendUrl}/files`).subscribe(
       (data) => {
-        console.log(data);
-        
+        this.loading = false;
         if (data && Array.isArray(data.data)) {
           this.files = data.data.map((file: { filename: any; status: string; id: any; purpose: any; bytes: number; created_at: number; }) => ({
             name: file.filename,
@@ -35,6 +36,7 @@ export class ListFilesViewComponent implements OnInit {
         }
       },
       (error) => {
+        this.loading = false;
         console.error('Error fetching files:', error);
       }
     );
@@ -46,7 +48,14 @@ export class ListFilesViewComponent implements OnInit {
   }
 
   onDelete(file: any) {
-    console.log('Delete file:', file);
-    // Add delete functionality here
+    this.http.delete(`${environment.backendUrl}/files/${file.id}`).subscribe(
+      (response) => {
+        console.log('File deleted successfully:', file.id);
+        this.files = this.files.filter(f => f.id !== file.id);
+      },
+      (error) => {
+        console.error('Error deleting file:', error);
+      }
+    );
   }
 }
