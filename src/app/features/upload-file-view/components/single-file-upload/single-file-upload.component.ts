@@ -3,16 +3,21 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { environment } from '../../../../../environments/environment';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { MarkdownModule } from 'ngx-markdown';
 
 @Component({
   selector: 'app-single-file-upload',
   templateUrl: './single-file-upload.component.html',
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule, HttpClientModule, FormsModule, MarkdownModule],
 })
 export class SingleFileUploadComponent {
   status: 'initial' | 'uploading' | 'success' | 'fail' = 'initial';
   file: File | null = null;
   isDragOver: boolean = false;
+  additionalText: string = '';
+  responseContent: string | null = null;
 
   constructor(private http: HttpClient) {}
 
@@ -59,6 +64,7 @@ export class SingleFileUploadComponent {
       
       const formData = new FormData();
       formData.append('file', this.file, this.file.name);
+      formData.append('additional_text', this.additionalText);
 
       console.log('Uploading file:', this.file.name);
       this.status = 'uploading';
@@ -68,6 +74,9 @@ export class SingleFileUploadComponent {
           this.status = 'success';
           console.log('File uploaded successfully:', this.file?.name);
           console.log('Response:', response);
+          // @ts-ignore
+          this.responseContent = response.choices[0].message.content;
+          console.log('OpenAI Completion Response:', this.responseContent);
         },
         (error) => {
           this.status = 'fail';
@@ -80,5 +89,6 @@ export class SingleFileUploadComponent {
   removeFile() {
     this.file = null;
     this.status = 'initial';
+    this.responseContent = null;
   }
 }
