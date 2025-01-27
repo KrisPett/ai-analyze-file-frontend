@@ -5,19 +5,20 @@ import { CommonModule } from '@angular/common';
 import { environment } from '../../../../../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { MarkdownModule } from 'ngx-markdown';
+import { MarkdownComponent } from 'ngx-markdown';
+
 
 @Component({
   selector: 'app-single-file-upload',
   templateUrl: './single-file-upload.component.html',
-  imports: [CommonModule, HttpClientModule, FormsModule, MarkdownModule],
+  imports: [CommonModule, HttpClientModule, FormsModule, MarkdownComponent],
 })
 export class SingleFileUploadComponent {
   status: 'initial' | 'uploading' | 'success' | 'fail' = 'initial';
   file: File | null = null;
   isDragOver: boolean = false;
   additionalText: string = '';
-  responseContent: string | null = null;
+  responseContent: string = "";
 
   constructor(private http: HttpClient) {}
 
@@ -89,6 +90,6 @@ export class SingleFileUploadComponent {
   removeFile() {
     this.file = null;
     this.status = 'initial';
-    this.responseContent = null;
+    this.responseContent = "";
   }
 }
