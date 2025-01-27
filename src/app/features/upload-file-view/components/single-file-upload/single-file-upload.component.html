@@ -83,11 +83,13 @@
         </button>
       </div>
 
-      <div *ngIf="responseContent" class="mt-4 p-4 bg-[#2D2D2D] rounded-md">
+      <div *ngIf="loading" class="flex justify-center items-center mt-4">
+        <span class="loading loading-spinner loading-xs"></span>
+      </div>
+
+      <div *ngIf="responseContent && !loading" class="mt-4 p-4 bg-[#2D2D2D] rounded-md">
         <h3 class="text-lg font-semibold text-[#E5E7EB]">Analysis Result</h3>
         <markdown [data]="responseContent"></markdown>
-    
-        <!-- <markdown katex [src]="path/to/file.md">markdown></markdown> -->
       </div>
     </div>
   </div>

@@ -19,6 +19,7 @@ export class SingleFileUploadComponent {
   isDragOver: boolean = false;
   additionalText: string = '';
   responseContent: string = "";
+  loading: boolean = false;
 
   constructor(private http: HttpClient) {}
 
@@ -69,10 +70,12 @@ export class SingleFileUploadComponent {
 
       console.log('Uploading file:', this.file.name);
       this.status = 'uploading';
+      this.loading = true;
 
       this.http.post(`${environment.backendUrl}/analyze-file`, formData).subscribe(
         (response) => {
           this.status = 'success';
+          this.loading = false;
           console.log('File uploaded successfully:', this.file?.name);
           console.log('Response:', response);
           // @ts-ignore
@@ -81,6 +84,7 @@ export class SingleFileUploadComponent {
         },
         (error) => {
           this.status = 'fail';
+          this.loading = false;
           console.error('File upload failed:', error);
         }
       );
